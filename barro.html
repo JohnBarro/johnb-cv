@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        John Nemesio J. Barro
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        @keyframes tonext {
+            75% {
+                left: 0;
+            }
+
+            95% {
+                left: 100%;
+            }
+
+            98% {
+                left: 100%;
+            }
+
+            99% {
+                left: 0;
+            }
+        }
+
+        @keyframes tostart {
+            75% {
+                left: 0;
+            }
+
+            95% {
+                left: -300%;
+            }
+
+            98% {
+                left: -300%;
+            }
+
+            99% {
+                left: 0;
+            }
+        }
+
+        @keyframes snap {
+            96% {
+                scroll-snap-align: center;
+            }
+
+            97% {
+                scroll-snap-align: none;
+            }
+
+            99% {
+                scroll-snap-align: none;
+            }
+
+            100% {
+                scroll-snap-align: center;
+            }
+        }
+
+        body {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            font-family: 'Lato', sans-serif;
+            margin-top: 100px;
+        }
+
+        * {
+            box-sizing: border-box;
+            scrollbar-color: transparent transparent;
+            /* thumb and track color */
+            scrollbar-width: 0px;
+        }
+
+        *::-webkit-scrollbar {
+            width: 0;
+        }
+
+        *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: transparent;
+            border: none;
+        }
+
+        * {
+            -ms-overflow-style: none;
+        }
+
+        ol,
+        li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            position: relative;
+            padding-top: 60%;
+            filter: drop-shadow(0 0 10px #0003);
+            perspective: 100px;
+        }
+
+        .carousel__viewport {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            overflow-x: scroll;
+            counter-reset: item;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel__slide {
+            position: relative;
+            flex: 0 0 100%;
+            width: 100%;
+            counter-increment: item;
+        }
+
+        .carousel__slide:nth-child(even) {
+            /* background-color: #99f; */
+        }
+
+        .carousel__slide:before {
+            content: counter(item);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%, -40%, 70px);
+            color: #fff;
+            font-size: 2em;
+            display: none !important;
+        }
+
+        /* .carousel__snapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: center;
+            display: none !important;
+        } */
+
+        @media (hover: hover) {
+            .carousel__snapper {
+                animation-name: tonext, snap;
+                animation-timing-function: ease;
+                animation-duration: 4s;
+                animation-iteration-count: infinite;
+            }
+
+            .carousel__slide:last-child .carousel__snapper {
+                animation-name: tostart, snap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .carousel__snapper {
+                animation-name: none;
+            }
+        }
+
+        .carousel:hover .carousel__snapper,
+        .carousel:focus-within .carousel__snapper {
+            animation-name: none;
+        }
+
+        .carousel__navigation {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+        }
+
+        .carousel__navigation-list,
+        .carousel__navigation-item {
+            display: inline-block;
+        }
+
+        .carousel__navigation-button {
+            display: inline-block;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #333;
+            background-clip: content-box;
+            border: 0.25rem solid transparent;
+            border-radius: 50%;
+            font-size: 0;
+            transition: transform 0.1s;
+        }
+
+        .carousel::before,
+        .carousel::after,
+        .carousel__prev,
+        .carousel__next {
+            position: absolute;
+            top: 0;
+            margin-top: 37.5%;
+            width: 4rem;
+            height: 4rem;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            font-size: 0;
+            outline: 0;
+        }
+
+        .carousel::before,
+        .carousel__prev {
+            left: -1rem;
+        }
+
+        .carousel::after,
+        .carousel__next {
+            right: -1rem;
+        }
+
+        .carousel::before,
+        .carousel::after {
+            content: '';
+            z-index: 1;
+            background-color: #333;
+            background-size: 1.5rem 1.5rem;
+            background-repeat: no-repeat;
+            background-position: center center;
+            color: #fff;
+            font-size: 2.5rem;
+            line-height: 4rem;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .carousel::before {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,50 80,100 80,0' fill='%23fff'/%3E%3C/svg%3E");
+        }
+
+        .carousel::after {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='100,50 20,100 20,0' fill='%23fff'/%3E%3C/svg%3E");
+        }
+    </style>
+
+</head>
+
+<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
+        <div class="container" style="margin-top: 20px;">
+            <a href="barro.html" class="logo"><img src="./images/jnb-logo.png" class="logo-lg" style="width: 80px;"
+                    alt=""></a>
+            <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse"
+                data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav nav ml-auto">
+                    <li class="nav-item"><a class="navbar-brand" href="barro.html">JOHN NEMESIO J. BARRO</a></li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="carousel" aria-label="Gallery">
+        <ol class="carousel__viewport">
+            <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+                <section class="ftco-about img ftco-section ftco-no-pb" id="about-section">
+                    <div class="container">
+                        <div class="row d-flex">
+                            <div class="col-md-6 col-lg-5 d-flex">
+                                <div class="img-about img d-flex align-items-stretch">
+                                    <div class="overlay"></div>
+                                    <div class="img d-flex align-self-stretch align-items-center" style="background-image:url(images/bg_1.png);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
+                                <div class="row justify-content-start pb-3">
+                              <div class="col-md-12 heading-section ftco-animate">
+                                  <h1 class="big">About</h1>
+                                <h2 class="mb-4">About Me</h2>
+                                <p>To be able to work with a team to enhance and develop my skills. Motivated to learn, grow and
+                                    apply the different approach for the team needs and able to provide professional work ethics and
+                                    to provide quality as well.</p>
+                                <ul class="about-info mt-4 px-md-0 px-2">
+                                    <li class="d-flex"><span>Name:</span> <span>John Nemesio J. Barro</span></li>
+                                    <li class="d-flex"><span>Date of birth:</span> <span>January 01, 1991</span></li>
+                                    <li class="d-flex"><span>Address:</span> <span>Davao Oriental, Philippines</span></li>
+                                    <li class="d-flex"><span>Zip code:</span> <span>8207</span></li>
+                                    <li class="d-flex"><span>Email:</span> <span>johnbarro977@gmail.com</span></li>
+                                    <li class="d-flex"><span>Phone: </span> <span>+63-906-2568-937</span></li>
+                                </ul>
+                              </div>
+                            </div>
+                          <div class="counter-wrap ftco-animate d-flex mt-md-3">
+                          <div class="text">
+                              <p class="mb-4">
+                                <span class="number" data-number="13">0</span>
+                                <span>Project complete</span>
+                            </p>
+                            <!-- <p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p> -->
+                          </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                </section>
+            
+                    <a href="#carousel__slide4" class="carousel__prev">Go to last slide</a>
+                    <a href="#carousel__slide2" class="carousel__next">Go to next slide</a>
+                </div>
+            </li>
+            <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+                <section class="ftco-section ftco-no-pb" id="resume-section">
+                    <div class="container">
+                        <div class="row justify-content-center pb-5">
+                      <div class="col-md-10 heading-section text-center ftco-animate">
+                          <h1 class="big big-2">Resume</h1>
+                        <h2 class="mb-4">Resume</h2>
+                        <p>To be able to work with a team to enhance and develop my skills. Motivated to learn, grow and
+                            apply the different approach for the team needs and able to provide professional work ethics and
+                            to provide quality as well.</p>
+                      </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="resume-wrap ftco-animate">
+                                    <span class="date">2019-2021</span>
+                                    <h2>WEBSITE AND MOBILE APP DEVELOPER</h2>
+                                    <span class="position">ICTSC LTD.</span>
+                                    <p class="mt-4">Provide front-end website
+                                        development using Wordpress platform, and other editing software. Applied Apples Swift
+                                        development language (SwiftUI) to code native apps for iOs platform.</p>
+                                </div>
+                                <div class="resume-wrap ftco-animate">
+                                    <span class="date">2021-2022</span>
+                                    <h2>CROSS PLATFORM APP DEVELOPER,</h2>
+                                    <span class="position">BUSINESS APPS TODAY LLC</span>
+                                    <p class="mt-4">Provide Front-End website
+                                        development using Angular ionic framework, develop crossplatform application.</p>
+                                </div>
+                                <div class="resume-wrap ftco-animate">
+                                    <span class="date">2022-2023</span>
+                                    <h2>WEB &amp; MOBILE APP DEVELOPER</h2>
+                                    <span class="position">WOZINGA LTD.</span>
+                                    <p class="mt-4">Applied Swift development
+                                        language (SwiftUI) to code native apps for iOs platform. | Develop HTML website</p>
+                                </div>
+                            </div>
+            
+                            <div class="col-md-6">
+                                
+                                <div class="resume-wrap ftco-animate">
+                                    <span class="date">2019</span>
+                                    <h2>Wordpress Developer</h2>
+                                    <span class="position">Accelerated Digital Delivery LTD.</span>
+                                    <p class="mt-4">Develop website using website builder, Elementor, Divi, and paid and free plugin.</p>
+                                </div>
+                                <div class="resume-wrap ftco-animate">
+                                    <span class="date">2023</span>
+                                    <h2>Website Developer - WIX</h2>
+                                    <span class="position">Triple K Tech Solutions</span>
+                                    <p class="mt-4">Develop website for quick-books online store</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-5">
+                            <div class="col-md-6 text-center ftco-animate">
+                                <p><a href="#" class="btn btn-primary py-4 px-5">Download CV</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <a href="#carousel__slide1" class="carousel__prev">Go to previous slide</a>
+                <a href="#carousel__slide3" class="carousel__next">Go to next slide</a>
+            </li>
+            <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+                <section class="ftco-section" id="services-section" style="margin-top: -100px;">
+                    <div class="container">
+                        <div class="row justify-content-center py-5 mt-5">
+                      <div class="col-md-12 heading-section text-center ftco-animate">
+                          <h1 class="big big-2">Services</h1>
+                        <h2 class="mb-4">Services</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                      </div>
+                    </div>
+                        <div class="row">
+                                <div class="col-md-4 text-center d-flex ftco-animate">
+                                    <a href="#" class="services-1">
+                                        <span class="icon">
+                                            <i class="flaticon-analysis"></i>
+                                        </span>
+                                        <div class="desc">
+                                            <h3 class="mb-5">Web Design</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 text-center d-flex ftco-animate">
+                                    <a href="#" class="services-1">
+                                        <span class="icon">
+                                            <i class="flaticon-flasks"></i>
+                                        </span>
+                                        <div class="desc">
+                                            <h3 class="mb-5">Phtography</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 text-center d-flex ftco-animate">
+                                    <a href="#" class="services-1">
+                                        <span class="icon">
+                                            <i class="flaticon-ideas"></i>
+                                        </span>
+                                        <div class="desc">
+                                            <h3 class="mb-5">Web Developer</h3>
+                                        </div>
+                                    </a>
+                                </div>
+            
+                                <div class="col-md-4 text-center d-flex ftco-animate">
+                                    <a href="#" class="services-1">
+                                        <span class="icon">
+                                            <i class="flaticon-analysis"></i>
+                                        </span>
+                                        <div class="desc">
+                                            <h3 class="mb-5">App Developing</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 text-center d-flex ftco-animate">
+                                    <a href="#" class="services-1">
+                                        <span class="icon">
+                                            <i class="flaticon-flasks"></i>
+                                        </span>
+                                        <div class="desc">
+                                            <h3 class="mb-5">Branding</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-md-4 text-center d-flex ftco-animate">
+                                    <a href="#" class="services-1">
+                                        <span class="icon">
+                                            <i class="flaticon-ideas"></i>
+                                        </span>
+                                        <div class="desc">
+                                            <h3 class="mb-5">Product Strategy</h3>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                    </div>
+                </section>
+                <a href="#carousel__slide2" class="carousel__prev">Go to previous slide</a>
+                <a href="#carousel__slide4" class="carousel__next">Go to next slide</a>
+            </li>
+            <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+                <section class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg); margin-top: 150px;">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 ftco-animate text-center">
+                                <h2>I'm <span>Available</span> for freelancing</h2>
+                                <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                                <p class="mb-0"><a href="#" class="btn btn-primary py-3 px-5">Hire me</a></p>
+                            </div> -->
+                        </div>
+                    </div>
+                </section>
+                <a href="#carousel__slide3" class="carousel__prev">Go to previous slide</a>
+                <a href="#carousel__slide1" class="carousel__next">Go to first slide</a>
+            </li>
+        </ol>
+        <aside class="carousel__navigation">
+            <ol class="carousel__navigation-list">
+                <li class="carousel__navigation-item">
+                    <a href="#carousel__slide1" class="carousel__navigation-button">Go to slide 1</a>
+                </li>
+                <li class="carousel__navigation-item">
+                    <a href="#carousel__slide2" class="carousel__navigation-button">Go to slide 2</a>
+                </li>
+                <li class="carousel__navigation-item">
+                    <a href="#carousel__slide3" class="carousel__navigation-button">Go to slide 3</a>
+                </li>
+                <li class="carousel__navigation-item">
+                    <a href="#carousel__slide4" class="carousel__navigation-button">Go to slide 4</a>
+                </li>
+            </ol>
+        </aside>
+    </section>
+
+    <footer class="ftco-footer ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p>
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | John Nemesio J.
+                        Barro
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00" />
+        </svg></div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
